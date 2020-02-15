@@ -1,0 +1,201 @@
+/*
+ *  Document   : plugins.css
+ *  Author     : Sean(Dan) Biwott Theme
+ *  Description: stylesheet for third  party plugin customizations
+ 
+ 
+ 				STRUCTURE
+ 				
+ 				1. Bootstrap DatePicker
+ 				2. Bootstrap Daterangepicker
+ 				3. Bootstrap  Datetimepicker
+ 				
+ 				
+ */
+/**********************************
+		1. Bootstrap DatePicker
+***********************************/
+.datepicker .active,
+.datepicker .active:hover,
+.datepicker .selected,
+.datepicker .today {
+    background-image: none !important;
+    filter: none !important
+}
+.datepaginator a {
+    font-family: 'Open Sans';
+    font-size: 13px;
+    font-weight: 300
+}
+
+.datepicker table td,
+.datepicker table th,
+.datetimepicker table td,
+.datetimepicker table th {
+    font-family: 'Open Sans' !important
+}
+
+#dp-calendar {
+    right: 4px !important
+}
+
+.datepaginator .fa-angle-right:before {
+    content: ""
+}
+
+.datepaginator .fa-angle-left:before,
+.datepicker .fa-angle-left:before {
+    content: ""
+}
+
+.datepicker.dropdown-menu {
+    padding: 5px;
+    box-shadow: 5px 5px rgba(102, 102, 102, .1);
+    border: 1px solid #efefef
+}
+
+.datepicker .selected {
+    background-color: #909090 !important
+}
+
+.datepicker .active {
+    background-color: #4b8df8 !important
+}
+
+.datepicker .active:hover {
+    background-color: #2678FC !important
+}
+
+.datepicker .input-daterange input {
+    text-align: left
+}
+
+.datepicker table td {
+    color: #000;
+    font-weight: 300 !important
+}
+
+.datepicker table th {
+    color: #333;
+    font-weight: 400 !important
+}
+
+.datepicker .fa-angle-right:before,
+.daterangepicker .fa-angle-right:before {
+    content: ""
+}
+
+/***********************************
+	2. Bootstrap Daterangepicker
+************************************/
+
+.daterangepicker {
+    margin-top: 4px
+}
+
+.daterangepicker .input-mini {
+    width: 100% !important;
+    outline: 0 !important
+}
+
+.daterangepicker td {
+    text-shadow: none
+}
+
+.daterangepicker td.active {
+    background-color: #4b8df8;
+    background-image: none;
+    filter: none
+}
+
+.datetimepicker .active,
+.datetimepicker .active:hover {
+    filter: none !important;
+    background-image: none !important
+}
+
+.daterangepicker th {
+    font-weight: 400;
+    font-size: 14px
+}
+
+.daterangepicker .ranges input[type=text] {
+    width: 70px !important;
+    font-size: 11px;
+    vertical-align: middle
+}
+
+.daterangepicker .ranges label {
+    font-weight: 300;
+    display: block
+}
+
+.daterangepicker .ranges {
+    width: 170px
+}
+
+.daterangepicker .ranges ul>li.active {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px
+}
+
+.daterangepicker .ranges .btn {
+    margin-top: 10px
+}
+
+.daterangepicker .ranges li {
+    color: #333
+}
+
+.daterangepicker .ranges li.active,
+.daterangepicker .ranges li:hover {
+    background: #4b8df8 !important;
+    border: 1px solid #4b8df7 !important;
+    color: #fff
+}
+
+.daterangepicker .range_inputs input {
+    margin-bottom: 0 !important
+}
+
+.daterangepicker .fa-angle-left:before,
+.datetimepicker .fa-angle-left:before {
+    content: ""
+}
+
+/***********************************
+	3. Bootstrap  Datetimepicker
+************************************/
+
+.datetimepicker table td {
+    color: #000;
+    font-weight: 300 !important;
+    padding: 7px;
+    text-align: center;
+}
+
+.datetimepicker table th {
+    font-weight: 400 !important
+}
+
+.datetimepicker .active {
+    background-color: #4b8df8 !important
+}
+
+.datetimepicker .active:hover {
+    background-color: #2678FC !important
+}
+
+.datetimepicker .fa-angle-right:before {
+    content: ""
+}
+
+/* change z-index when opened in modal */
+.modal-open .colorpicker,
+.modal-open .datepicker,
+.modal-open .daterangepicker {
+    z-index: 10055 !important
+}

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- BEGIN HEAD -->
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta name="description" content="Responsive Admin Panel" />
+  <meta name="author" content="dankibiwott" />
+  <title>sGhost | Admin Panel</title>
+  <!-- google font -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
+  <!-- icons -->
+  <link href="fonts/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+  <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link href="fonts/material-design-icons/material-icon.css" rel="stylesheet" type="text/css" />
+  <!--bootstrap -->
+  <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <!-- Material Design Lite CSS -->
+  <link rel="stylesheet" href="assets/plugins/material/material.min.css" />
+  <!-- Theme Styles -->
+  <link href="assets/css/theme/light/theme_style.css" rel="stylesheet" id="rt_style_components" type="text/css" />
+  <link href="assets/css/theme/light/style.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/plugins.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/theme/light/theme-color.css" rel="stylesheet" type="text/css" />
+  <!-- Date Time item CSS -->
+  <link rel="stylesheet" href="assets/plugins/material-datetimepicker/bootstrap-material-datetimepicker.css" />
+  <!-- favicon -->
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+</head>
+<!-- END HEAD -->
+
+<body
+  class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white white-sidebar-color logo-indigo">
+  <div class="page-wrapper">
+    <!-- start header -->
+    <div class="page-header navbar navbar-fixed-top">
+      <div class="page-header-inner ">
+        <!-- logo start -->
+        <div class="page-logo" style="background-color: green;">
+          <a href="index.html">
+            <span class="logo-icon material-icons fa-rotate-45">polymer</span>
+            <span class="logo-default">Sean</span>
+          </a>
+        </div>
+        <!-- logo end -->
+        <ul class="nav navbar-nav navbar-left in">
+          <li>
+            <a href="#" class="menu-toggler sidebar-toggler"><i class="icon-menu"></i></a>
+          </li>
+        </ul>
+        <!-- start mobile menu -->
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse"
+          data-target=".navbar-collapse">
+          <span></span>
+        </a>
+        <!-- end mobile menu -->
+        <!-- start header menu -->
+        <div class="top-menu">
+          <ul class="nav navbar-nav pull-right">
+            <li>
+              <a href="javascript:;" class="fullscreen-btn"><i class="fa fa-arrows-alt"></i></a>
+            </li>
+            <!-- start language menu -->
+            <li class="dropdown language-switch">
+              <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <img src="assets/img/flags/gb.png" class="position-left" alt="" />
+                English <span class="fa fa-angle-down"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="deutsch"><img src="assets/img/flags/de.png" alt="" />
+                    Deutsch</a>
+                </li>
+                <li>
+                  <a class="ukrainian"><img src="assets/img/flags/ua.png" alt="" />
+                    Українська</a>
+                </li>
+                <li>
+                  <a class="english"><img src="assets/img/flags/gb.png" alt="" />
+                    English</a>
+                </li>
+                <li>
+                  <a class="espana"><img src="assets/img/flags/es.png" alt="" /> España</a>
+                </li>
+                <li>
+                  <a class="russian"><img src="assets/img/flags/ru.png" alt="" />
+                    Русский</a>
+                </li>
+              </ul>
+            </li>
+            <!-- end language menu -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- end header -->
+    <!-- start page container -->
+    <div class="page-container">
+      <!-- start sidebar menu -->
+      <div class="sidebar-container">
+        <div class="sidemenu-container navbar-collapse collapse fixed-menu">
+          <div id="remove-scroll" class="left-sidemenu">
+            <ul class="sidemenu  page-header-fixed slimscroll-style" data-keep-expanded="false" data-auto-scroll="true"
+              data-slide-speed="200" style="padding-top: 20px">
+              <li class="sidebar-toggler-wrapper hide">
+                <div class="sidebar-toggler">
+                  <span></span>
+                </div>
+              </li>
+              <li class="sidebar-user-panel">
+                <div class="user-panel">
+                  <div class="pull-left image">
+                    <img src="assets/img/dp.jpg" class="img-circle user-img-circle" alt="User Image" />
+                  </div>
+                  <div class="pull-left info">
+                    <p>Sean(Dan) biwott</p>
+                    <a href="#"><i class="fa fa-circle user-online"></i><span class="txtOnline"> Online</span></a>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item active open">
+                <a href="#" class="nav-link nav-toggle">
+                  <i class="material-icons">store</i>
+                  <span class="title">Material Elements</span>
+                  <span class="selected"></span>
+                  <span class="arrow open"></span>
+                </a>
+                <ul class="sub-menu">
+                  <li class="nav-item active">
+                    <a href="material_datepicker.html" class="nav-link ">
+                      <span class="title">DatePicker</span>
+                      <span class="selected"></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- end sidebar menu -->
+      <!-- start page content -->
+      <div class="page-content-wrapper">
+        <div class="page-content">
+          <div class="page-bar">
+            <div class="page-title-breadcrumb">
+              <div class=" pull-left">
+                <div class="page-title">DatePicker</div>
+              </div>
+              <ol class="breadcrumb page-breadcrumb pull-right">
+                <li>
+                  <i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="index.html">Home</a>&nbsp;<i
+                    class="fa fa-angle-right"></i>
+                </li>
+                <li class="active">DatePicker</li>
+              </ol>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card-box">
+                <div class="card-head">
+                  <header>Date Picker</header>
+                </div>
+                <div class="card-body ">
+                  <div class="col-lg-6 p-t-20">
+                    <div class="form-control-wrapper">
+                      <input type="text" id="date" class="floating-label mdl-textfield__input" placeholder="Date" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card-box">
+                <div class="card-head">
+                  <header>Time Picker</header>
+                </div>
+                <div class="card-body ">
+                  <div class="col-lg-6 p-t-20">
+                    <div class="form-control-wrapper">
+                      <input type="text" id="time" class="floating-label mdl-textfield__input" placeholder="Time" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card-box">
+                <div class="card-head">
+                  <header>Date Time Picker</header>
+                </div>
+                <div class="card-body ">
+                  <div class="col-lg-6 p-t-20">
+                    <div class="form-control-wrapper">
+                      <input type="text" id="date-format" class="floating-label mdl-textfield__input"
+                        placeholder="Date Time Picker" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card-box">
+                <div class="card-head">
+                  <header>French Locales (Week starts at Monday)</header>
+                </div>
+                <div class="card-body ">
+                  <div class="col-lg-6 p-t-20">
+                    <div class="form-control-wrapper">
+                      <input type="text" id="date-fr" class="floating-label mdl-textfield__input"
+                        value="18/03/2015 08:00" placeholder="Date de dꣵt" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card-box">
+                <div class="card-head">
+                  <header>Min Date set</header>
+                </div>
+                <div class="card-body ">
+                  <div class="col-lg-6 p-t-20">
+                    <div class="form-control-wrapper">
+                      <input type="text" id="min-date" class="floating-label mdl-textfield__input"
+                        placeholder="Start Date" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card-box">
+                <div class="card-head">
+                  <header>Events</header>
+                </div>
+                <div class="card-body ">
+                  <div class="col-lg-6 p-t-20">
+                    <div class="row">
+                      <div class="col-md-12 p-t-20">
+                        <div class="form-control-wrapper">
+                          <input type="text" id="date-start" class="floating-label mdl-textfield__input"
+                            placeholder="Start Date" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 p-t-20">
+                        <div class="form-control-wrapper">
+                          <input type="text" id="date-end" class="floating-label mdl-textfield__input"
+                            placeholder="End Date" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end page content -->
+    </div>
+    <!-- end page container -->
+    <!-- start footer -->
+    <div class="page-footer">
+      <div class="page-footer-inner">
+        2019 &copy; DatePicker Theme By
+        <a href="mailto:dankibiwott254@gmail.com" target="_top" class="makerCss">Sean/Dan Biwott</a>
+      </div>
+      <div class="scroll-to-top">
+        <i class="icon-arrow-up"></i>
+      </div>
+    </div>
+    <!-- end footer -->
+  </div>
+  <!-- start js include path -->
+  <script src="assets/plugins/jquery/jquery.min.js"></script>
+  <script src="assets/plugins/popper/popper.js"></script>
+  <script src="assets/plugins/jquery-blockui/jquery.blockui.min.js"></script>
+  <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+  <!-- bootstrap -->
+  <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+  <!-- Common js-->
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/theme-color.js"></script>
+  <!-- Material -->
+  <script src="assets/plugins/material/material.min.js"></script>
+  <script src="assets/plugins/material-datetimepicker/moment-with-locales.min.js"></script>
+  <script src="assets/plugins/material-datetimepicker/bootstrap-material-datetimepicker.js"></script>
+  <script src="assets/plugins/material-datetimepicker/datetimepicker.js"></script>
+  <!-- end js include path -->
+</body>
+
+</html>
