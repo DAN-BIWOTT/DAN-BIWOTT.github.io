@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Easy Placement | Joan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="font/iconsmind-s/css/iconsminds.css" />
+    <link rel="stylesheet" href="font/simple-line-icons/css/simple-line-icons.css" />
+
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/vendor/bootstrap.rtl.only.min.css" />
+    <link rel="stylesheet" href="css/vendor/fullcalendar.min.css" />
+    <link rel="stylesheet" href="css/vendor/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="css/vendor/datatables.responsive.bootstrap4.min.css" />
+    <link rel="stylesheet" href="css/vendor/select2.min.css" />
+    <link rel="stylesheet" href="css/vendor/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="css/vendor/glide.core.min.css" />
+    <link rel="stylesheet" href="css/vendor/bootstrap-stars.css" />
+    <link rel="stylesheet" href="css/vendor/nouislider.min.css" />
+    <link rel="stylesheet" href="css/vendor/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" href="css/vendor/component-custom-switch.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body id="app-container" class="menu-default show-spinner">
+    <nav class="navbar fixed-top">
+        <div class="d-flex align-items-center navbar-left">
+            <a href="#" class="menu-button d-none d-md-block">
+                <svg class="main" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 17">
+                    <rect x="0.48" y="0.5" width="7" height="1" />
+                    <rect x="0.48" y="7.5" width="7" height="1" />
+                    <rect x="0.48" y="15.5" width="7" height="1" />
+                </svg>
+                <svg class="sub" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 17">
+                    <rect x="1.56" y="0.5" width="16" height="1" />
+                    <rect x="1.56" y="7.5" width="16" height="1" />
+                    <rect x="1.56" y="15.5" width="16" height="1" />
+                </svg>
+            </a>
+
+            <a href="#" class="menu-button-mobile d-xs-block d-sm-block d-md-none">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 17">
+                    <rect x="0.5" y="0.5" width="25" height="1" />
+                    <rect x="0.5" y="7.5" width="25" height="1" />
+                    <rect x="0.5" y="15.5" width="25" height="1" />
+                </svg>
+            </a>
+
+            <div class="search" data-search-path="Pages.Search.html?q=">
+                <input placeholder="Search...">
+                <span class="search-icon">
+                    <i class="simple-icon-magnifier"></i>
+                </span>
+            </div>
+
+        </div>
+
+
+        <a class="navbar-logo" href="analysis.html">
+            <span class="logo d-none d-xs-block"></span>
+            <span class="logo-mobile d-block d-xs-none"></span>
+        </a>
+
+        <div class="navbar-right">
+            <div class="header-icons d-inline-block align-middle">
+                <div class="d-none d-md-inline-block align-text-bottom mr-3">
+                    <div class="custom-switch custom-switch-primary-inverse custom-switch-small pl-1"
+                         data-toggle="tooltip" data-placement="left" title="Dark Mode">
+                        <input class="custom-switch-input" id="switchDark" type="checkbox" checked>
+                        <label class="custom-switch-btn" for="switchDark"></label>
+                    </div>
+                </div>
+
+                <div class="position-relative d-none d-sm-inline-block">
+                    <button class="header-icon btn btn-empty" type="button" id="iconMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="simple-icon-grid"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right mt-3  position-absolute" id="iconMenuDropdown">
+                        <a href="#" class="icon-menu-item">
+                            <i class="iconsminds-equalizer d-block"></i>
+                            <span>Settings</span>
+                        </a>
+
+                        <a href="#" class="icon-menu-item">
+                            <i class="iconsminds-male-female d-block"></i>
+                            <span>Users</span>
+                        </a>
+
+                        <a href="#" class="icon-menu-item">
+                            <i class="iconsminds-puzzle d-block"></i>
+                            <span>Components</span>
+                        </a>
+
+                        <a href="#" class="icon-menu-item">
+                            <i class="iconsminds-bar-chart-4 d-block"></i>
+                            <span>Profits</span>
+                        </a>
+
+                        <a href="#" class="icon-menu-item">
+                            <i class="iconsminds-file d-block"></i>
+                            <span>Surveys</span>
+                        </a>
+
+                        <a href="#" class="icon-menu-item">
+                            <i class="iconsminds-suitcase d-block"></i>
+                            <span>Tasks</span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="position-relative d-inline-block">
+                    <button class="header-icon btn btn-empty" type="button" id="notificationButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="simple-icon-bell"></i>
+                        <span class="count">3</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right mt-3 position-absolute" id="notificationDropdown">
+                        <div class="scroll">
+                            <div class="d-flex flex-row mb-3 pb-3 border-bottom">
+                                <a href="#">
+                                    <img src="img/profiles/l-2.jpg" alt="Notification Image"
+                                        class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle" />
+                                </a>
+                                <div class="pl-3">
+                                    <a href="#">
+                                        <p class="font-weight-medium mb-1">Eldoret University Computer Science intake quota filled</p>
+                                        <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row mb-3 pb-3 border-bottom">
+                                <a href="#">
+                                    <img src="img/notifications/1.jpg" alt="Notification Image"
+                                        class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle" />
+                                </a>
+                                <div class="pl-3">
+                                    <a href="#">
+                                        <p class="font-weight-medium mb-1">Kenyatta University Business intake quota filled</p>
+                                        <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row mb-3 pb-3 border-bottom">
+                                <a href="#">
+                                    <img src="img/notifications/2.jpg" alt="Notification Image"
+                                        class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle" />
+                                </a>
+                                <div class="pl-3">
+                                    <a href="#">
+                                        <p class="font-weight-medium mb-1">Nairobi University Medicine intake quota filled</p>
+                                        <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row mb-3 pb-3 ">
+                                <a href="#">
+                                    <img src="img/notifications/3.jpg" alt="Notification Image"
+                                        class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle" />
+                                </a>
+                                <div class="pl-3">
+                                    <a href="#">
+                                        <p class="font-weight-medium mb-1"> KUCCPS release update
+                                        </p>
+                                        <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="header-icon btn btn-empty d-none d-sm-inline-block" type="button" id="fullScreenButton">
+                    <i class="simple-icon-size-fullscreen"></i>
+                    <i class="simple-icon-size-actual"></i>
+                </button>
+
+            </div>
+
+            <div class="user d-inline-block">
+                <button class="btn btn-empty p-0" type="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <span class="name">Joan muriithi</span>
+                    <span>
+                        <img alt="Profile Picture" src="img/profiles/l-1.jpg" />
+                    </span>
+                </button>
+
+                <div class="dropdown-menu dropdown-menu-right mt-3">
+                    <a class="dropdown-item" href="#">Account</a>
+                    <a class="dropdown-item" href="#">Features</a>
+                    <a class="dropdown-item" href="#">History</a>
+                    <a class="dropdown-item" href="#">Support</a>
+                    <a class="dropdown-item" href="#">Sign out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="menu">
+        <div class="main-menu">
+            <div class="scroll">
+                <ul class="list-unstyled">
+                    <li >
+                        <a href="#dashboard">
+                            <i class="iconsminds-shop-4"></i>
+                            <span>Dashboards</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="analysis.html">
+                            <i class="iconsminds-digital-drawing"></i> Results Analytics
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="iconsminds-library"></i> Docs
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sub-menu">
+            <div class="scroll">
+                <ul class="list-unstyled" data-link="dashboard">
+                    <li>
+                        <a href="index.html">
+                            <i class="simple-icon-rocket"></i> <span class="d-inline-block">How To Start</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resultSlip.html">
+                            <i class="simple-icon-pie-chart"></i> <span class="d-inline-block">Result Slip</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Analysis</h1>
+                    <nav class="breadcrumb-container d-none d-sm-block d-lg-inline-block" aria-label="breadcrumb">
+                        <ol class="breadcrumb pt-0">
+                            <li class="breadcrumb-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Data</li>
+                        </ol>
+                    </nav>
+                    <div class="separator mb-5"></div>
+                </div>
+                <div class="col-lg-12 col-xl-6">
+                    <div class="icon-cards-row">
+                        <div class="glide dashboard-numbers">
+                            <div class="glide__track" data-glide-el="track">
+                                <ul class="glide__slides">
+                                    <li class="glide__slide">
+                                        <a href="#" class="card">
+                                            <div class="card-body text-center">
+                                                <i class="iconsminds-clock"></i>
+                                                <p class="card-text mb-0">COURSES QUALIFIED</p>
+                                                <p class="lead text-center">600</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="glide__slide">
+                                        <a href="#" class="card">
+                                            <div class="card-body text-center">
+                                                <i class="iconsminds-basket-coins"></i>
+                                                <p class="card-text mb-0">UNIVERSITIES QUALIFIED</p>
+                                                <p class="lead text-center">32</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="glide__slide">
+                                        <a href="#" class="card">
+                                            <div class="card-body text-center">
+                                                <i class="iconsminds-arrow-refresh"></i>
+                                                <p class="card-text mb-0">POINTS</p>
+                                                <p class="lead text-center">60</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="glide__slide">
+                                        <a href="#" class="card">
+                                            <div class="card-body text-center">
+                                                <i class="iconsminds-mail-read"></i>
+                                                <p class="card-text mb-0">New Comments</p>
+                                                <p class="lead text-center">25</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <div class="card">
+                                <div class="position-absolute card-top-buttons">
+
+                                    <button class="btn btn-header-light icon-button" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="simple-icon-refresh"></i>
+                                    </button>
+
+                                    <div class="dropdown-menu dropdown-menu-right mt-3">
+                                        <a class="dropdown-item" href="#">Sales</a>
+                                        <a class="dropdown-item" href="#">Orders</a>
+                                        <a class="dropdown-item" href="#">Refunds</a>
+                                    </div>
+
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">GRADES</h5>
+                                    <div class="dashboard-line-chart chart">
+                                        <canvas id="salesChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-12 mb-4">
+                    <div class="card">
+                        <div class="position-absolute card-top-buttons">
+                            <button class="btn btn-header-light icon-button">
+                                <i class="simple-icon-refresh"></i>
+                            </button>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Qualified Courses</h5>
+                            <div class="scroll dashboard-list-with-thumbs">
+                                <div class="d-flex flex-row mb-3">
+                                    <a class="d-block position-relative" href="details.html">
+                                        <img src="img/products/marble-cake-thumb.jpg" alt="Marble Cake"
+                                            class="list-thumbnail border-0" />
+                                        <span
+                                            class="badge badge-pill badge-theme-2 position-absolute badge-top-right">Intake Ongoing</span>
+                                    </a>
+                                    <div class="pl-3 pt-2 pr-2 pb-2">
+                                        <a href="details.html">
+                                            <p class="list-item-heading">Bachelor of Arts</p>
+                                            <div class="pr-4 d-none d-sm-block">
+                                                <p class="text-muted mb-1 text-small">24/45 Universities</p>
+                                            </div>
+                                            <div class="text-primary text-small font-weight-medium d-none d-sm-block">
+                                                09.04.2018</div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row mb-3">
+                                    <a class="d-block position-relative" href="details.html">
+                                        <img src="img/products/fruitcake-thumb.jpg" alt="Fruitcake"
+                                            class="list-thumbnail border-0" />
+                                        <span
+                                            class="badge badge-pill badge-theme-2 position-absolute badge-top-right">Intake Ongoing</span>
+                                    </a>
+                                    <div class="pl-3 pt-2 pr-2 pb-2">
+                                        <a href="details.html">
+                                            <p class="list-item-heading">Bachelor of Architectural Studies/bachelor of Architecture</p>
+                                            <div class="pr-4 d-none d-sm-block">
+                                                <p class="text-muted mb-1 text-small">14/145 Universities</p>
+                                            </div>
+                                            <div class="text-primary text-small font-weight-medium d-none d-sm-block">
+                                                09.04.2018</div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row mb-3">
+                                    <a class="d-block position-relative" href="details.html">
+                                        <img src="img/products/chocolate-cake-thumb.jpg" alt="Chocolate Cake"
+                                            class="list-thumbnail border-0" />
+                                        <span
+                                            class="badge badge-pill badge-theme-1 position-absolute badge-top-right">Intake Ongoing</span>
+                                    </a>
+                                    <div class="pl-3 pt-2 pr-2 pb-2">
+                                        <a href="details.html">
+                                            <p class="list-item-heading">Bachelor of Quantity Surveying</p>
+                                            <div class="pr-4 d-none d-sm-block">
+                                                <p class="text-muted mb-1 text-small">34/45 Universities</p>
+                                            </div>
+                                            <div class="text-primary text-small font-weight-medium d-none d-sm-block">
+                                                09.04.2018</div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row mb-3">
+                                    <a class="d-block position-relative" href="details.html">
+                                        <img src="img/products/fat-rascal-thumb.jpg" alt="Fat Rascal"
+                                            class="list-thumbnail border-0" />
+                                        <span
+                                            class="badge badge-pill badge-theme-3 position-absolute badge-top-right">Intake Ongoing</span>
+                                    </a>
+                                    <div class="pl-3 pt-2 pr-2 pb-2">
+                                        <a href="details.html">
+                                            <p class="list-item-heading">Bachelor of Arts (Design)</p>
+                                            <div class="pr-4 d-none d-sm-block">
+                                                <p class="text-muted mb-1 text-small">50/135 Universities</p>
+                                            </div>
+                                            <div class="text-primary text-small font-weight-medium d-none d-sm-block">
+                                                09.04.2018</div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row mb-3">
+                                    <a class="d-block position-relative" href="details.html">
+                                        <img src="img/products/streuselkuchen-thumb.jpg" alt="Streuselkuchen"
+                                            class="list-thumbnail border-0" />
+                                        <span
+                                            class="badge badge-pill badge-theme-3 position-absolute badge-top-right">Intake Ongoing</span>
+                                    </a>
+                                    <div class="pl-3 pt-2 pr-2 pb-2">
+                                        <a href="details.html">
+                                            <p class="list-item-heading">Bachelor of Arts (Anthropology)</p>
+                                            <div class="pr-4 d-none d-sm-block">
+                                                <p class="text-muted mb-1 text-small">40/45 Universities</p>
+                                            </div>
+                                            <div class="text-primary text-small font-weight-medium d-none d-sm-block">
+                                                09.04.2018</div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row mb-3">
+                                    <a class="d-block position-relative" href="details.html">
+                                        <img src="img/products/cremeschnitte-thumb.jpg" alt="Cremeschnitte"
+                                            class="list-thumbnail border-0" />
+                                        <span
+                                            class="badge badge-pill badge-theme-3 position-absolute badge-top-right">DONE</span>
+                                    </a>
+                                    <div class="pl-3 pt-2 pr-2 pb-2">
+                                        <a href="details.html">
+                                            <p class="list-item-heading">Bachelor of Science (Biology)</p>
+                                            <div class="pr-4 d-none d-sm-block">
+                                                <p class="text-muted mb-1 text-small">20/50 Universities</p>
+                                            </div>
+                                            <div class="text-primary text-small font-weight-medium d-none d-sm-block">
+                                                09.04.2018</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-6 mb-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Grade Strength Visual</h5>
+                            <div class="dashboard-donut-chart chart">
+                                <canvas id="polarChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-xl-6 col-lg-6 mb-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Significant Dates</h5>
+                            <div class="calendar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <div class="footer-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <p class="mb-0 text-muted">Easy Uni. Placement 2021 (Prototype)</p>
+                    </div>
+                    <div class="col-sm-6 d-none d-sm-block">
+                        <ul class="breadcrumb pt-0 pr-0 float-right">
+                            <li class="breadcrumb-item mb-0">
+                                <a href="#" class="btn-link">Designer</a>
+                            </li>
+                            <li class="breadcrumb-item mb-0">
+                                <a href="#" class="btn-link">BackEnd Developer</a>
+                            </li>
+                            <li class="breadcrumb-item mb-0">
+                                <a href="#" class="btn-link">DevOps</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/vendor/jquery-3.3.1.min.js"></script>
+    <script src="js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="js/vendor/Chart.bundle.min.js"></script>
+    <script src="js/vendor/chartjs-plugin-datalabels.js"></script>
+    <script src="js/vendor/moment.min.js"></script>
+    <script src="js/vendor/fullcalendar.min.js"></script>
+    <script src="js/vendor/datatables.min.js"></script>
+    <script src="js/vendor/perfect-scrollbar.min.js"></script>
+    <script src="js/vendor/progressbar.min.js"></script>
+    <script src="js/vendor/jquery.barrating.min.js"></script>
+    <script src="js/vendor/select2.full.js"></script>
+    <script src="js/vendor/nouislider.min.js"></script>
+    <script src="js/vendor/bootstrap-datepicker.js"></script>
+    <script src="js/vendor/Sortable.js"></script>
+    <script src="js/vendor/mousetrap.min.js"></script>
+    <script src="js/vendor/glide.min.js"></script>
+    <script src="js/dore.script.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
