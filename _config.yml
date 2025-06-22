@@ -13,15 +13,15 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: "Dan Biwott's ML Blog"
+title: "Precision is Justice"
 description: "Projects, Experiments, and Articles on Machine Learning, Trading, and Code"
 url: "https://dan-biwott.github.io"  # OR your custom domain
-baseurl: "/ml-blog"  # If this is a sub-repo (adjust if deploying to root)
+baseurl: "/"  # If this is a sub-repo (adjust if deploying to root)
 author:
   name: "Dan Biwott"
   email: "dankibiwottdev@gmail.com"
 twitter_username: username
-github_username: username
+github_username: DAN-BIWOTT
 minimal_mistakes_skin: default
 search: true
 
@@ -59,34 +59,37 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "First Lastname"
+  name   : "Dan Kibiwott"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
+  bio    : "Dan Biwott builds machine learning systems at the bleeding edge of signal and noise. With roots in academia and eyes on real-world impact, his models don’t just predict — they adapt, learn, and survive. <br>Based in Cambridge, Dan operates from the shadows of the Hidden Layer Village — a digital alley where gradient flows meet cybernetic instinct. Whether it’s forecasting volatile markets or deploying ensemble agents into production, his code reads like a tactical dossier and hits like a plasma bolt. <br> Welcome to the neural underworld. Jack in, stay sharp, and never trust a silent model."
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      url: "https://"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://portfolio2021-ochre.vercel.app/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://github.com/DAN-BIWOTT"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://www.instagram.com/dan_kibiwott/?next=%2F"
+    - label: "Linkedin"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/dan-kibiwott/"
 
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+    - label: "LinkIn"
+      icon: "fab fa-fw fa fa-linkedin"
+      url: "https://www.linkedin.com/in/dan-kibiwott/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://www.instagram.com/dan_kibiwott/?next=%2F"
+    - label: "Stackoverflow"
+      icon: "fab fa-fw fa fa-stack-overflow"
+      url: "https://stackoverflow.com/users/10830408/dan-kibiwott"
 
 defaults:
   # _posts
