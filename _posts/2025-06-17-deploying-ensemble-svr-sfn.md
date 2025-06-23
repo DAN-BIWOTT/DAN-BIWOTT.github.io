@@ -6,7 +6,8 @@ categories: [Projects]
 description: "A step-by-step walkthrough of building, training, evaluating, and exporting an ensemble model using Linear SVR and SFN for market prediction."
 ---
 
-This post takes you under the hood of a custom-built forecasting engine—a hybrid model that blends the precision of a **Linear Support Vector Regressor (SVR)** with the pattern-recognition strength of a **Simple Feedforward Network (SFN)**, both implemented in scikit-learn. Think of it like pairing a tactical marksman with a perceptive analyst: the SVR locks onto linear patterns with precision, while the SFN explores nonlinear terrains often invisible to traditional models. Together, they forecast the ne...
+This post takes you under the hood of a custom-built forecasting engine—a hybrid model that blends the precision of a **Linear Support Vector Regressor (SVR)** with the pattern-recognition strength of a **Simple Feedforward Network (SFN)**, both implemented in scikit-learn. Think of it like pairing a tactical marksman with a perceptive analyst: the SVR locks onto linear patterns with precision, while the SFN explores nonlinear terrains often invisible to traditional models. 
+Together, they team up to forecast the next median candlestick price in the USD/JPY forex market. The inputs? A carefully engineered set of signals drawn from thousands of lines of historical trading data—each feature acting like a sensor feeding real-time battlefield intelligence into the model’s decision-making core.
 
 ---
 
