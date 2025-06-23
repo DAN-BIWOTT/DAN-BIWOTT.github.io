@@ -1,12 +1,10 @@
 ---
-
 title: "Teaching Machines to See: SURF, HOG & Bagging Magic in Image Classification"
 date: 2025-06-23
-tags: \[Computer Vision, Machine Learning, Python, Ensemble Learning, Image Processing]
-categories: \[Projects]
+tags: [Computer Vision, Machine Learning, Python, Ensemble Learning, Image Processing]
+categories: [Projects]
 description: "A walkthrough of building an image classifier using SURF, HOG features and Bagging, with Decision Trees and Random Forests in the mix."
------------------------------------------------------------------------------------------------------------
-
+---
 What if we could teach machines to see—not just glance, but *perceive*, understand, and categorize? In this post, we step into the world of image classification using a blend of classical computer vision and ensemble machine learning. Picture it like giving a robot eyes (SURF + HOG) and a brain (Bagging + Decision Trees) to recognize visual patterns.
 
 ---
