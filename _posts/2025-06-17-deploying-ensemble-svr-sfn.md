@@ -6,23 +6,20 @@ categories: [Projects]
 description: "A step-by-step walkthrough of building, training, evaluating, and exporting an ensemble model using Linear SVR and SFN for market prediction."
 ---
 
-In this post, I take you under the hood of a custom-built forecasting engine—a hybrid model that fuses the precision of a Linear Support Vector Regressor (SVR) with the intuition of a Simple Feedforward Network (SFN), both crafted using scikit-learn. Think of it like pairing a sniper and a scout: one is linear and sharp with low variance; the other, nonlinear and perceptive, learning from patterns the first might miss. Together, they team up to forecast the next median candlestick price in the USD/JPY forex market. The inputs? A carefully engineered set of signals drawn from thousands of lines of historical trading data—each feature acting like a sensor feeding real-time battlefield intelligence into the model’s decision-making core.
-
+This post takes you under the hood of a custom-built forecasting engine—a hybrid model that blends the precision of a **Linear Support Vector Regressor (SVR)** with the pattern-recognition strength of a **Simple Feedforward Network (SFN)**, both implemented in scikit-learn. Think of it like pairing a tactical marksman with a perceptive analyst: the SVR locks onto linear patterns with precision, while the SFN explores nonlinear terrains often invisible to traditional models. Together, they forecast the ne...
 
 ---
 
-🔹 Step 1: Import Dependencies
-Before we can fire up our forecasting engine, we need to gather our toolkit. These libraries act like the crew in a command center—each with a clear role:
+**🔹 Step 1: Import Dependencies**
 
-pandas handles our data logistics.
+Before we can fire up our forecasting engine, we need to gather our toolkit. These libraries function like a command squad:
 
-tensorflow (for later graphing and experimentation) brings deep learning muscle if we need it.
+- `pandas` for data logistics
+- `tensorflow` (optional, for future deep learning extensions)
+- `matplotlib.pyplot` for visual diagnostics
+- `re` and `sys` for command-line interface parsing and automation
 
-matplotlib.pyplot gives us the radar screen—essential for visual diagnostics.
-
-re and sys help us parse filenames and handle command-line operations like a proper data ops terminal.
-
-```
+```python
 import pandas as pd
 import tensorflow as tf
 import matplotlib.pyplot as plt
@@ -32,35 +29,35 @@ import sys
 
 ---
 
-🔹 Step 2: Load and Preprocess Market Data
+**🔹 Step 2: Load and Preprocess Market Data**
 
-- Accepts a CSV filename from command line arguments  
-- Extracts the date from the filename for logging and versioning  
-- Reverses data to maintain chronological order  
-- Reduces dataset to the latest 10,000 records  
-- Adds engineered features: `Future_Median`, price change %, rolling volume averages, lagged medians
+- Accept a CSV file via command line
+- Extract date for versioning
+- Reverse data chronologically
+- Limit to most recent 10,000 rows
+- Engineer features including `Future_Median`, percent changes, volume averages, and lagged medians
 
 ---
 
-🔹 Step 3: Feature Selection
+**🔹 Step 3: Feature Selection**
 
-We prepare the feature matrix `X` and target variable `y`:
+We define our feature matrix `X` and target `y`:
 
-```
+```python
 features = ["Open", "High", "Low", "Close", "Price_Difference", "Open_Close_Change_Pct",
             "High_Low_Change_Pct", "Volume", "Volume_MA_20", "Volume_Change_Pct",
             "median_t-1", "median_t-2"]
 ```
 
-Missing values are removed to ensure consistency.
+Missing values are dropped to maintain integrity.
 
 ---
 
-🔹 Step 4: Scaling and Splitting
+**🔹 Step 4: Scaling and Splitting**
 
-We scale the data using `StandardScaler` and split into training and testing sets:
+Data is scaled and partitioned into training and testing sets:
 
-```
+```python
 from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
@@ -69,17 +66,15 @@ X_test = scaler.transform(X_test)
 
 ---
 
-🔹 Step 5: Train SVR and SFN with Grid Search
+**🔹 Step 5: Train SVR and SFN with Grid Search**
 
-**LinearSVR:**
-
-```
+**LinearSVR Parameters:**
+```python
 param_grid = {'C': [1, 10, 50], 'epsilon': [0.01, 0.1, 1]}
 ```
 
-**SFN (MLPRegressor):**
-
-```
+**SFN Parameters (MLPRegressor):**
+```python
 param_grid_sfn = {
     'hidden_layer_sizes': [(50,), (100,), (50, 50), (100, 50)],
     'activation': ['relu', 'tanh'],
@@ -91,11 +86,12 @@ param_grid_sfn = {
 
 ---
 
-🔹 Step 6: Ensemble the Models
+**🔹 Step 6: Ensemble the Models**
 
-We use `VotingRegressor` to combine SVR and SFN:
+Using `VotingRegressor` to blend predictions:
 
-```
+```python
+from sklearn.ensemble import VotingRegressor
 ensemble_model = VotingRegressor(estimators=[('linear_svr', best_linear_svr_model),
                                              ('sfn', best_sfn_model)],
                                  weights=[0.7, 0.3])
@@ -104,42 +100,44 @@ ensemble_model.fit(X_train, y_train)
 
 ---
 
-🔹 Step 7: Evaluate Model Performance
+**🔹 Step 7: Evaluate Model Performance**
 
-We compute metrics like MSE, RMSE, MAE, R², and explained variance.  
-Visual comparisons are plotted for training and testing data.
+We compute the following metrics:
+
+- MSE, RMSE, MAE
+- R² (Coefficient of Determination)
+- Explained Variance
+
+Visual plots compare actual vs. predicted medians for both training and testing sets.
 
 ---
 
-🔹 Step 8: Save Logs and Export to ONNX
+**🔹 Step 8: Save Logs and Export to ONNX**
 
-- Model logs are saved in JSON format  
-- Includes feature names, scaling parameters, performance metrics, and model name/version
+- Save performance logs to JSON
+- Include model version, feature list, and scaling parameters
 
-We then export the trained model to ONNX format:
+Export model to ONNX:
 
-```
+```python
 from skl2onnx import convert_sklearn
+from skl2onnx.common.data_types import FloatTensorType
 onnx_model = convert_sklearn(ensemble_model, initial_types=[('input', FloatTensorType([None, X_test.shape[1]]))])
 ```
 
 ---
 
-🔹 Step 9: Send Model Log to Arasaka Neural Bastion (Optional API Endpoint)
+**🔹 Step 9: Send Model Log to Arasaka Neural Bastion (Optional API Endpoint)**
 
-If online, we send the performance and meta data to a remote backend for storage and monitoring:
+If online, performance metadata can be sent to a remote API for archival and monitoring:
 
-```
+```python
 result = SendToArasaka(log_data)
 print(result)
 ```
 
 ---
 
-✅ Summary
+**Summary**
 
-This ensemble model is part of an ongoing exploration of hybrid architectures for time-series forecasting.  
-Exporting to ONNX also ensures compatibility with non-Python runtime environments.
-
-Stay tuned for part 2: **Feature Selection and Hyperparameter Tuning Techniques**.
-
+This ensemble marks a step forward in tactical forecasting—balancing interpretability with flexibility. Exporting to ONNX means the model can now serve in non-Python environments (like trading terminals or embedded agents). Stay tuned for Part 2: **Advanced Feature Engineering + Hyperparameter Tuning**.

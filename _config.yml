@@ -16,7 +16,7 @@
 title: "Precision is Justice"
 description: "Projects, Experiments, and Articles on Machine Learning, Trading, and Code"
 url: "https://dan-biwott.github.io"  # OR your custom domain
-baseurl: "/"  # If this is a sub-repo (adjust if deploying to root)
+baseurl:  # If this is a sub-repo (adjust if deploying to root)
 author:
   name: "Dan Biwott"
   email: "dankibiwottdev@gmail.com"
@@ -57,6 +57,12 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-include-cache
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Include custom CSS
+custom_css:
+  - /assets/css/custom.css
 
 author:
   name   : "Dan Kibiwott"

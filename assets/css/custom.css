@@ -1,0 +1,88 @@
+/* Corporate Classy Cyberpunk - Light Mode */
+
+/* Base body */
+body {
+  background-color: #f8f9fa; /* Light, soft off-white */
+  color: #222; /* Dark text for readability */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+/* Links */
+a, a:visited {
+  color: #0077ff; /* Electric blue */
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover, a:focus {
+  color: #8a2be2; /* Electric purple accent */
+  text-shadow: 0 0 6px #8a2be2;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+  color: #111; /* Darker for emphasis */
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 3px #0077ff;
+}
+
+/* Navigation bar */
+.masthead {
+  background-color: #ffffff;
+  border-bottom: 2px solid #0077ff;
+  box-shadow: 0 2px 5px rgba(0, 119, 255, 0.15);
+}
+
+/* Sidebar author card */
+.author__content {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 0 10px #0077ff33; /* subtle glow */
+  color: #333;
+}
+
+/* Buttons */
+.btn, .btn--inverse {
+  background-color: #0077ff;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.25s ease;
+  box-shadow: 0 0 8px #0077ff99;
+}
+
+.btn:hover, .btn--inverse:hover {
+  background-color: #8a2be2;
+  color: #fff;
+  box-shadow: 0 0 12px #8a2be2;
+}
+
+/* Footer */
+.page__footer {
+  background-color: #f8f9fa;
+  color: #555;
+  border-top: 1px solid #0077ff;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Code blocks */
+.highlight {
+  background-color: #e7f0ff; /* light electric blue */
+  border-left: 4px solid #0077ff;
+  padding: 1rem;
+  border-radius: 4px;
+  font-family: 'Fira Mono', monospace;
+  color: #003366;
+}
+
+/* Subtle animations */
+a {
+  will-change: color, text-shadow;
+}
