@@ -246,10 +246,3 @@ The true mission is alignment   - between algorithm and market, between human in
   
 
 **Coming soon → Part II: “Synthetic Instinct: Building the Adaptive Trader.”**
-
-```
-
-  
-
-Would you like me to follow this up with **Part II**   - the one that introduces *Synthetic Instinct*, adaptive retraining, and smarter trade logic   - in the same cyberpunk-teaching tone (essentially the “Arasaka v3.0” chapter)?
-```
