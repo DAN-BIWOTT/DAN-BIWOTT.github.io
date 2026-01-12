@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en" class="">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Machine Learning for Imaging</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --background: 165 50% 97%;
+      --foreground: 180 4% 5%;
+      --muted: 180 5% 96%;
+      --muted-foreground: 170 3% 40%;
+      --popover: 0 0% 99%;
+      --popover-foreground: 180 4% 5%;
+      --card: 0 0% 99%;
+      --card-foreground: 180 4% 5%;
+      --primary: 173 80% 36%;
+      --primary-foreground: 210 40% 98%;
+      --secondary: 171 16% 92%;
+      --secondary-foreground: 222.2 47.4% 11.2%;
+      --accent: 171 16% 92%;
+      --accent-foreground: 222.2 47.4% 11.2%;
+      --destructive: 10 78% 54%;
+      --destructive-foreground: 0 0% 98%;
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 86.4%;
+      --link: 172 100% 26%;
+      --ring: 173 46% 72%;
+      --radius: 0.5rem;
+    }
+
+    .dark {
+      --background: 165 11% 7%;
+      --foreground: 171 14% 90%;
+      --muted: 175 18% 14%;
+      --muted-foreground: 173 8% 60%;
+      --accent: 174 55% 11%;
+      --accent-foreground: 174 55% 98%;
+      --popover: 180 9% 9%;
+      --popover-foreground: 171 14% 90%;
+      --card: 180 9% 9%;
+      --card-foreground: 171 14% 90%;
+      --primary: 173 80% 36%;
+      --primary-foreground: 210 40% 98%;
+      --secondary: 174 55% 11%;
+      --secondary-foreground: 163 69% 98%;
+      --destructive: 10 78% 40%;
+      --destructive-foreground: 210 40% 98%;
+      --border: 173 10% 17%;
+      --input: 175 10% 25%;
+      --ring: 173 50% 45%;
+      --link: 170 90% 45%;
+    }
+
+    body {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+    }
+  
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+     .doc-figure img{
+    max-height: 320px;   /* <- change to 280/360 if you prefer */
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+    ::selection {
+      background-color: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+    }
+  </style>
+</head>
+
+<body class="bg-background text-foreground">
+  <header class="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+      <div class="min-w-0">
+        <p class="text-xs text-muted-foreground">Curiosity 001</p>
+        <h1 class="truncate text-sm font-semibold tracking-tight">Machine Learning for Imaging</h1>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="themeBtn"
+          class="rounded-xl border border-border/70 bg-card px-3 py-2 text-xs font-medium text-muted-foreground hover:bg-muted/50">
+          Toggle theme
+        </button>
+        <a href="#content"
+          class="rounded-xl bg-primary px-3 py-2 text-xs font-medium text-primary-foreground hover:opacity-95">
+          Jump to content
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 py-6 lg:grid-cols-[320px_1fr]">
+    <aside class="hidden lg:block">
+      <div class="sticky top-20 rounded-2xl border border-border/70 bg-card p-4 shadow-sm">
+        <p class="text-xs font-medium text-muted-foreground">On this page</p>
+        <p class="mt-1 text-sm font-semibold tracking-tight">Table of contents</p>
+        <nav class="mt-3 max-h-[75vh] overflow-auto pr-2">
+          <ul class="ml-3 mt-2 space-y-1">
+            <ul class="ml-3 mt-2 space-y-1">
+              <ul class="ml-3 mt-2 space-y-1">
+                <li><a
+                    class="block rounded-lg px-2 py-1 text-sm text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                    href="#table-of-contents">Table of Contents</a></li>
+                <li><a
+                    class="block rounded-lg px-2 py-1 text-sm text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                    href="#1-introduction">1. Introduction</a></li>
+                <li><a
+                    class="block rounded-lg px-2 py-1 text-sm text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                    href="#2-curation-and-presentation-of-the-dataset">2. Curation and Presentation of the Dataset</a>
+                </li>
+              </ul>
+              <li><a
+                  class="block rounded-lg px-2 py-1 text-sm text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                  href="#feature-extraction">Feature Extraction</a></li>
+              <ul class="ml-3 mt-2 space-y-1">
+                <li><a
+                    class="block rounded-lg px-2 py-1 text-sm text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                    href="#3-machine-learning-techniques">3. Machine Learning Techniques</a></li>
+                <li><a
+                    class="block rounded-lg px-2 py-1 text-sm text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                    href="#32-random-forests">3.2 Random Forests</a></li>
+                <li><a
+                    class="block rounded-lg px-2 py-1 text-sm text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                    href="#33-stochastic-gradient-descent-classifier">3.3 Stochastic Gradient Descent Classifier</a>
+                </li>
+                <li><a
+                    class="block rounded-lg px-2 py-1 text-sm text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                    href="#34-multi-layer-perceptron-mlp">3.4 Multi-layer Perceptron (MLP)</a></li>
+                <li><a
+                    class="block rounded-lg px-2 py-1 text-sm text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                    href="#35-deep-learning-networks">3.5 Deep Learning Networks</a></li>
+                <li><a
+                    class="block rounded-lg px-2 py-1 text-sm text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                    href="#36-pre-trained-networks">3.6 Pre-trained Networks</a></li>
+                <li><a
+                    class="block rounded-lg px-2 py-1 text-sm text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                    href="#4-original-idea">4. Original Idea</a></li>
+                <li><a
+                    class="block rounded-lg px-2 py-1 text-sm text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                    href="#5-discussion-and-comparison-of-methods">5. Discussion and Comparison of Methods</a></li>
+                <li><a
+                    class="block rounded-lg px-2 py-1 text-sm text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                    href="#6-conclusions">6. Conclusions</a></li>
+                <li><a
+                    class="block rounded-lg px-2 py-1 text-sm text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+                    href="#7-references">7. References</a></li>
+              </ul>
+            </ul>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <main id="content" class="min-w-0">
+      <section class="rounded-2xl border border-border/70 bg-card p-6 shadow-sm">
+        <div class="flex flex-col gap-3">
+          <div class="inline-flex items-center gap-2">
+            <span class="h-2.5 w-2.5 rounded-full bg-primary"></span>
+            <span class="text-xs font-medium text-muted-foreground">Authored by <b>Dan Kibiwott</b></span>
+          </div>
+          <h2 class="text-2xl font-semibold tracking-tight">Machine Learning for Imaging</h2>
+          <div class="rounded-2xl bg-muted/40 p-4 ring-1 ring-border/60">
+            <p class="text-sm text-muted-foreground">
+              This document evaluates classical machine learning, feature extraction, and deep learning methods for
+              binary image classification (Raccoon vs Rifle) using a curated OpenImages dataset.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs text-muted-foreground">
+            <span class="rounded-full bg-muted/60 px-2.5 py-1 ring-1 ring-border/60">dankibiwottcb4@gmail.com</span>
+            <span class="rounded-full bg-muted/60 px-2.5 py-1 ring-1 ring-border/60"> +44 794 925 3315</span>
+            <span class="rounded-full bg-muted/60 px-2.5 py-1 ring-1 ring-border/60">Cambridge, UK</span>
+          </div>
+        </div>
+      </section>
+
+      <article class="mt-6 rounded-2xl border border-border/70 bg-card p-6 shadow-sm">
+        <h3 id="1-introduction" class="mt-7 scroll-mt-24 font-semibold tracking-tight text-foreground text-lg">1.
+          Introduction</h3>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Computer vision is a complex discipline that seeks
+          to distinguish and classify images [1]. This project aims to accomplish a total of five (5) tasks related to
+          computer vision.</p>
+        <ol type="1">
+          <li>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">1) Dataset creation: Generate a dataset
+              containing
+              two elements of choice using OpenImage V7.</p>
+          </li>
+          <li>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">2) Image Classification: Implement various
+              classification algorithms and methods.</p>
+          </li>
+          <li>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">3) Summary of Work: report the findings on
+              this
+              study.</p>
+          </li>
+          <li>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">4) Scientific Literature: Reference
+              literatures that
+              guide selection, implementation and summary of techniques.</p>
+          </li>
+          <li>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">5) Document Quality: Adhere to set word limit,
+              document structure, formatting, logic flow, and clarity.</p>
+          </li>
+        </ol>
+
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">The chosen pair for this project shall be a
+          Raccoon class and a Rifle class. </p>
+        <h3 id="2-curation-and-presentation-of-the-dataset"
+          class="mt-7 scroll-mt-24 font-semibold tracking-tight text-foreground text-lg">2. Curation and Presentation of
+          the Dataset</h3>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">The dataset is an aggregate of images,
+          compartmentalized into two folders named Raccoon and Rifle stored on google drive. There are a total of two
+          thousand and sixty nine (2069) images. One thousand eight hundred and two (1802) are stored in the Rifle
+          folder and two hundred and sixty seven (267) are stored in the Raccoon folder.</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture24.png"
+            alt="Figure 0-1: "
+            class="mx-auto max-h-[420px] w-auto max-w-full object-contain p-4" loading="lazy" />
+     
+        </figure>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">The images were of different sizes and resolutions
+          so they were resized to 128 x 128 pixels to prevent skewness and manage memory. A grayscale filter was applied
+          ensuring evenness during training and evaluation and improving computational efficiency.</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture23.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+      
+          <img src="../assets/images/mlImaging/Picture22.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+        </figure>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          
+        </figure>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">70% of the images were then divided into training
+          dataset and 30% went into the testing dataset.</p>
+        <h2 id="feature-extraction" class="mt-9 scroll-mt-24 font-semibold tracking-tight text-foreground text-xl">
+          Feature Extraction</h2>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">SURF (Speeded-Up Robust Features)</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">SURF works by detecting abrupt changes in an image
+          such as abrupt changes in color or shape.</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture21.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+       
+        </figure>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture20.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+     
+            <img src="../assets/images/mlImaging/Picture19.png"
+              alt="Figure 0-1: "
+              class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+        </figure>
+  
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture18.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">A total of one (1) image was found lacking in any
+          distinct qualities and marked for deletion.</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture17.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Image 001722.jpg</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Using DecisionTreeClassifier, the following were
+          the results:</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture16.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">A total of 95 misclassified images.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">HOGs (Histogram of Gradients)</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">HOGs works by detecting the magnitude and
+          orientation of gradients in an image, which was effective in detecting the edges in riffles.</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture15.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture14.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Using DecisionTreeClassifier, the following were
+          the results:</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture13.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Seventy five misclassified images makes HOGS a
+          slightly better choice for feature extraction than SURF for this data set.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">PCA (Principal component analysis)</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">PCA reduces the dimensions in our images and
+          retains only the most striking features, hence simplifying the classification process.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">To prevent data leaks, simulate a Real-World
+          Scenario and Maintain Test Set Integrity, PCA was applied only to the training data set.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Below is a sample of an image constructed from the
+          calculated principal component.</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture12.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture11.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">A combination of PCA and a Decision Tree
+          Classifier resulted in an accuracy of 80.92%. </p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture10.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground"> KNN resulted in a test accuracy of 82.61%, a
+          slight improvement.</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture9.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture8.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+        <h3 id="3-machine-learning-techniques"
+          class="mt-7 scroll-mt-24 font-semibold tracking-tight text-foreground text-lg">3. Machine Learning Techniques
+        </h3>
+        <h3 id="32-random-forests" class="mt-7 scroll-mt-24 font-semibold tracking-tight text-foreground text-lg">3.2
+          Random Forests</h3>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">After performing feature extraction with Histogram
+          of Gradients (HOGs), Random forests were trained.</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture7.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Hyperparameter optimization using grid search
+          marginally improved the predictions.</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture6.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+        <h4 id="33-stochastic-gradient-descent-classifier"
+          class="mt-6 scroll-mt-24 font-semibold tracking-tight text-foreground text-base">3.3 Stochastic Gradient
+          Descent Classifier</h4>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Stochastic Gradient Descent is an iterative binary
+          classification optimization algorithm. In this case, it is used to find the optimal parameters for a linear
+          classifier that separates the two Rifle and Raccoon classes.</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture5.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+        <h4 id="34-multi-layer-perceptron-mlp"
+          class="mt-6 scroll-mt-24 font-semibold tracking-tight text-foreground text-base">3.4 Multi-layer Perceptron
+          (MLP)</h4>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">MLP was implemented with two(2) hidden layers,
+          ReLU activation, dropout regularization, and the Adam optimizer. </p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Accuracy and heatmaps are used to evaluate the
+          model&#x27;s results.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Below are the MLP’s performance results while
+          using HOG’s extracted features;</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture4.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Below are the results of the MLP with SURF’s
+          extracted features.</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture3.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+        <h4 id="35-deep-learning-networks"
+          class="mt-6 scroll-mt-24 font-semibold tracking-tight text-foreground text-base">3.5 Deep Learning Networks
+        </h4>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">A Convolutional Neural Network was defined and
+          trained according to the following architecture;</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">The CNN had three convolutional layers with 32,
+          64, and 128 filters.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Max-pooling was applied after each convolutional
+          layer.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Two fully connected (dense) layers with 128 and 64
+          neurons were used.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">ReLU activation was used in convolutional and
+          dense layers. </p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">The output layer used softmax activation for
+          multi-class classification.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">The Adam optimizer was used for training.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Sparse categorical cross-entropy loss was used for
+          integer labels.</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture2.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          <figcaption class="border-t border-border/70 bg-muted/30 p-3">
+            <p class="mt-1 text-sm leading-relaxed text-muted-foreground">
+
+            </p>
+          </figcaption>
+        </figure>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">The Convolution Neural Network out performed every
+          other model thus far with its 90.10% accuracy score.</p>
+        <h4 id="36-pre-trained-networks"
+          class="mt-6 scroll-mt-24 font-semibold tracking-tight text-foreground text-base">3.6 Pre-trained Networks</h4>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Leveraging transfer learning, only the final
+          connected layers were retrained. Though the test accuracy was lower than in Deep learning, it still performed
+          better than some of the other machine learning algorithms like the Multilayer Perceptrons.</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture1.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+        <h3 id="4-original-idea" class="mt-7 scroll-mt-24 font-semibold tracking-tight text-foreground text-lg">4.
+          Original Idea</h3>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Feature Extraction</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">SURF (Speeded-Up Robust Features): SURF extracts
+          object features such as local abrupt changes in scale, color and rotation. </p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">HOG (Histogram of Oriented Gradients): HOG
+          Extracts features that represent the distribution of gradients and their orientation in localized portions of
+          an image.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Merged Features: Both SURF and HOG extracted
+          feature vectors for each image were concatenated resulting in a richer representation of the image content.
+        </p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Bagging</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Bagging created an ensemble of base estimators
+          trained on different subsets of the data with the intent to reduce variance.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">CNN (Convolutional Neural Network): </p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Reshaping was a necessary step before feeding the
+          merged feature vectors into the CNN as inputs. A 4D array was created with the variables: number of samples,
+          height, width and channels.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Building the CNN Model: The CNN architecture was
+          defined using the TensorFlow library.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Training CNN: The model used the bagged features
+          and their labels as inputs.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Evaluation:</p>
+        <figure class="overflow-hidden rounded-2xl border border-border/70 bg-background">
+          <img src="../assets/images/mlImaging/Picture24.png"
+            alt="Figure 0-1: "
+            class="mx-auto w-1/2 max-w-5xl object-contain p-4" loading="lazy" />
+          
+        </figure>
+
+        <h3 id="5-discussion-and-comparison-of-methods"
+          class="mt-7 scroll-mt-24 font-semibold tracking-tight text-foreground text-lg">5. Discussion and Comparison of
+          Methods</h3>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">The performance accuracy of various method
+          combinations varied greatly.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">i) Principal Component Analysis, k-NN, Random
+          Forests and SGD:</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Pros: They have extensive online documentation
+          making them relatively easy to implement. Not much computation resources needed to be dedicated to them.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Cons: They struggled with complex patterns. As
+          soon as HOGs and SURF were concatenated, the accuracy plummeted.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Overall: They were great models, just not the
+          right fit for this particular dataset combination.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">ii) Feature Extraction Techniques: SURF and HOG
+        </p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Pros: They served their purpose by reducing the
+          dimensionalities of the images and extracting relevant features.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Cons: Some images were too complex for them to
+          capture essential features.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Overall: Programming every feature extraction
+          first hand was exhausting and time consuming yet far from being all encompassing.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">iii) Deep Learning: CNN and MLP</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Pros: They granted 90% accuracy when tested.
+          Automatically learning features instead of having to program them line by line was incredibly convenient. They
+          had no trouble capturing complex features within the provided dataset.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Cons: Too much computation power was needed and
+          overfitting suddenly became a problem.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Overall: They had the highest measure of accuracy
+          compared to other tried models.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">iv) Pre-trained Models: Fine-tuned ResNet</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Pros: The body of knowledge they draw from is
+          vast, making transfer learning its strongest feature. Great performance is often expected even on smaller
+          datasets. The computation resources required are reduced compared to training a deep model from the ground-up.
+        </p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Cons: Some adaptation was required for the chosen
+          dataset.</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Overall: Even though, often, they outperform other
+          methods, for this dataset, CNN happened to have the highest accuracy.</p>
+        <h3 id="6-conclusions" class="mt-7 scroll-mt-24 font-semibold tracking-tight text-foreground text-lg">6.
+          Conclusions</h3>
+        <h3
+          id="this-study-explored-various-machine-learning-methods-feature-extraction-and-image-classification-while-deep-learning-models-and-pre-trained-networks-offer-the-best-accuracy-performance-classical-methods-offer-less-resource-intensive-alternatives"
+          class="mt-7 scroll-mt-24 font-semibold tracking-tight text-foreground text-lg">This study explored various
+          machine learning methods, feature extraction and image classification. While deep learning models and
+          pre-trained networks offer the best accuracy performance, classical methods offer less resource intensive
+          alternatives.</h3>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Future work would explore narrowing bagging to
+          only the raccoon class and exploring other ensemblement techniques.</p>
+        <h3 id="7-references" class="mt-7 scroll-mt-24 font-semibold tracking-tight text-foreground text-lg">7.
+          References</h3>
+        <p class="mt-3 text-sm leading-relaxed text-muted-foreground">[1] Huang, S.-C. and Le, T.-H. (2021). Object
+          detection. [online] Academic Press, pp.283–331. doi:https://doi.org/10.1016/B978-0-323-90198-7.00009-4.</p>
+      </article>
+
+      <footer class="mt-6 pb-10 text-xs text-muted-foreground">
+        <p>Owned and Authored by: <span class="font-medium text-foreground">© Dan Kibiwott</span></p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark") root.classList.add("dark");
+    document.getElementById("themeBtn")?.addEventListener("click", () => {
+      root.classList.toggle("dark");
+      localStorage.setItem("theme", root.classList.contains("dark") ? "dark" : "light");
+    });
+  </script>
+</body>
+
+</html>
